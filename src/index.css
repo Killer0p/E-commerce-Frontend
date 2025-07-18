@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* .Font1 {
+  font-family: "Playfair";
+  /* font-weight: 900; */
+/* } */ 
+
+input {
+  border: 1px solid black;
+}
