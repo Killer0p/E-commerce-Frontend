@@ -8,7 +8,7 @@ const Textfield = ({
   type = "text",
 }) => {
   return (
-    <div className={"flex gap-3"}>
+    <div className={"flex gap-3 flex-col w-[400px]"}>
       <label htmlFor={id}>{label}</label>
       <input
         className="border border-gray-600 rounded p-2"
