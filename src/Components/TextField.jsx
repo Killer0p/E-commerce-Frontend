@@ -1,6 +1,7 @@
 const Textfield = ({
   label,
   onChange,
+  name,
   id,
   value,
   placeholder,
@@ -12,6 +13,7 @@ const Textfield = ({
       <label htmlFor={id}>{label}</label>
       <input
         className="border border-gray-600 rounded p-2"
+        name={name}
         type={type}
         id={id}
         placeholder={placeholder}
