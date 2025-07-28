@@ -1,48 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import TextField from "../components/TextField";
 import registerField from "../config/registerField";
-import { useNavigate } from "react-router-dom";
-import Textfield from "../Components/Textfield.jsx";
-import axios from "axios";
-import { handlePostOperation } from "../config/handlePostOperation.js";
-import { BASE_URL, registerInitialValue } from "../config/constant.js";
-import Cookies from "js-cookie";
+import { handlePostOperation } from "../config/handlePostOperation";
+import { registerInitialValue } from "../config/constants";
+
 const Register = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState(registerInitialValue);
-
-  const handleSaveCookie = () => {
-    Cookies.set("name", "Ribesh");
-
-    // try {
-    //   await axios.get("http://localhost:4000/test", {
-    //     withCredentials: true,
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  };
-
-  const handleClearCookie = () => {
-    Cookies.remove("name");
-  };
-
-  const name = Cookies.get("name");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.table(formData);
 
     const response = await handlePostOperation("/auth/register", formData);
 
     console.log(response);
 
     if (response.status === 201) {
-      alert("User Registered sucessfully");
+      alert("User registered Sucessfully!");
       setFormData(registerInitialValue);
     } else {
-      alert("Registration Failed");
+      alert("User registration failed!");
     }
-    //  navigate("/login");
   };
 
   const handleChange = (e) => {
@@ -50,31 +28,13 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleClearCookie = async () => {
-  //   console.log("object");
-  //   try {
-  //     await axios.get(`${BASE_URL}/clear-cookie`, {
-  //       withCredentials: true,
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   return (
-    <div className="flex items-center justify-center flex-col min-h-screen">
-      <button onClick={handleSaveCookie} className="border">
-        Add Cookie
-      </button>
-      <button onClick={handleClearCookie} className="border z-50">
-        Clear Cookie
-      </button>
-      {name}
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center flex-col">
       <div>Register</div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 border p-4">
         {registerField.map(({ id, label, placeholder, type, name }) => (
-          <Textfield
+          <TextField
             key={name}
             id={id}
             name={name}

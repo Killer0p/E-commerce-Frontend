@@ -10,14 +10,14 @@ const registerField = [
       id: "password",
       name: "password",
       label: "Password",
-      placeholder: "",
+      placeholder: "********",
       type: "password",
     },
     {
       id: "confirmPassword",
       name: "confirmPassword",
       label: "Confirm Password",
-      placeholder: "",
+      placeholder: "********",
       type: "password",
     },
     {
@@ -25,7 +25,7 @@ const registerField = [
       name: "phone",
       label: "Phone",
       placeholder: 9800000000,
-      type: "text",
+      type: "number",
     },
     {
       id: "userName",
